@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digantara</title>
+    <link rel="icon" type="image/x-icon" href="./img/img.avif" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-title">Digantara</div>
+      <div class="navbar-text">Form Validation Frontend Project</div>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </nav>
+
+    <!-- Heading -->
+    <div class="heading">
+      <h1>3-step dynamic multi-step form Validation</h1>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress-step" data-step="1"></div>
+        <div class="progress-step" data-step="2"></div>
+        <div class="progress-step" data-step="3"></div>
+      </div>
+
+      <!-- Step 1: Basic Details -->
+      <form id="step1" class="form-step active">
+        <h2>Basic Details Of The Form</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="Name" required />
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="DOB" required />
+        <label for="gender">Gender:</label>
+        <select id="gender" name="Gender" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <button type="button" class="next-btn">Next</button>
+      </form>
+
+      <!-- Step 2: Contact Information -->
+      <form id="step2" class="form-step">
+        <h2>Contact Information</h2>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" required />
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="Phone" required />
+        <label for="address">Address:</label>
+        <textarea id="address" name="Address" required></textarea>
+        <button type="button" class="back-btn">Back</button>
+        <button type="button" class="next-btn">Next</button>
+      </form>
+
+      <!-- Step 3: Summary -->
+      <form id="step3" class="form-step">
+        <h2>Summary Of The Form</h2>
+        <div id="summary"></div>
+        <button type="button" class="back-btn">Back</button>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+
+      <!-- Success Modal -->
+      <div id="successModal" class="modal">
+        <div class="modal-content">
+          <p>Form submitted successfully!</p>
+          <button id="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2025 Digantara. [ Developer - Md Sakeel ] All rights reserved.
+      </p>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+      const themeToggle = document.getElementById("theme-toggle");
+
+      function toggleTheme() {
+        const currentTheme =
+          document.documentElement.getAttribute("data-theme");
+        if (currentTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "light");
+          themeToggle.textContent = "🌙";
+          localStorage.setItem("theme", "light");
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
+          themeToggle.textContent = "☀️";
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      function loadTheme() {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+      }
+
+      themeToggle.addEventListener("click", toggleTheme);
+      loadTheme();
+    </script>
+
+    <!-- Link to the compiled JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>
